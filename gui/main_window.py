@@ -15,11 +15,11 @@ from PIL import Image, ImageTk
 import webbrowser
 import os
 
-from ..config.settings import config
-from ..capture.window_capture import WindowCapture, RegionSelector
-from ..detection.color_detector import ColorDetector, ColorCalibrator
-from ..detection.crossover_detector import CrossoverDetector, CrossoverVisualizer
-from ..alerts.telegram_alerter import AlertManager
+from config.settings import config
+from capture.window_capture import WindowCapture, RegionSelector
+from detection.color_detector import ColorDetector, ColorCalibrator
+from detection.crossover_detector import CrossoverDetector, CrossoverVisualizer
+from alerts.telegram_alerter import AlertManager
 
 
 class ZigZagDetectorApp:
