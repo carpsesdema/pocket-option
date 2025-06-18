@@ -1,0 +1,28 @@
+
+# ZigZag Crossover Detector - Requirements
+# Install with: pip install -r requirements.txt
+
+# Core Computer Vision
+opencv-python
+numpy
+
+# GUI Framework
+pillow
+
+# Screen Capture
+mss
+
+# Windows API (Windows only)
+pywin32
+
+# HTTP Requests for Telegram
+requests
+
+# System Monitoring
+psutil
+
+# Build Tools (for creating exe)
+pyinstaller
+
+# Optional: Enhanced GUI themes
+ttkthemes
