@@ -8,3 +8,7 @@
 /.idea/inspectionProfiles/Project_Default.xml
 /.idea/vcs.xml
 /logs/zigzag_detector.log
+/BUILD_EXE.bat
+/main.spec
+/dist/
+/build/
