@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-ZigZag Crossover Detector - Main Application
+ZigZag Crossover Detector - PySide6 Version
 Entry point for the ZigZag detection system
 """
 
@@ -10,9 +10,11 @@ import logging
 from pathlib import Path
 
 # Add src directory to path
-sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
+project_root = Path(__file__).parent
+src_path = project_root / "src"
+sys.path.insert(0, str(src_path))
 
-from gui.main_window import ZigZagDetectorApp
+from gui.main_window import ZigZagDetectorApp, create_app
 from config.settings import setup_logging
 
 
@@ -22,10 +24,21 @@ def main():
         # Setup logging
         setup_logging()
 
-        # Create and run application
-        app = ZigZagDetectorApp()
-        app.run()
+        # Create QApplication
+        app = create_app()
 
+        # Create and run application
+        main_window = ZigZagDetectorApp()
+        main_window.run()
+
+        # Start event loop
+        sys.exit(app.exec())
+
+    except ImportError as e:
+        logging.error(f"Application startup failed: {e}")
+        print(f"Error: {e}")
+        print("Make sure PySide6 is installed: pip install PySide6")
+        input("Press Enter to exit...")
     except Exception as e:
         logging.error(f"Application startup failed: {e}")
         print(f"Error: {e}")

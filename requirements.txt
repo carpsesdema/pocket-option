@@ -25,4 +25,4 @@ psutil
 pyinstaller
 
 # Optional: Enhanced GUI themes
-ttkthemes
+pyside6
