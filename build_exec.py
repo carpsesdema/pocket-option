@@ -52,6 +52,10 @@ class BulletproofBuilder:
                     import win32gui
                 elif package == 'pyside6':
                     import PySide6
+                elif package == 'pyinstaller':
+                    import PyInstaller
+                elif package == 'pillow':
+                    import PIL
                 else:
                     __import__(package.replace('-', '_'))
             except ImportError:
@@ -136,6 +140,11 @@ VSVersionInfo(
         version_file = self.create_version_file()
         config_file = self.create_embedded_config()
 
+        # Use forward slashes for cross-platform compatibility
+        project_root_str = str(self.project_root).replace('\\', '/')
+        icon_path_str = str(self.icon_path).replace('\\', '/')
+        version_file_str = str(version_file).replace('\\', '/')
+
         spec_content = f'''
 # -*- mode: python ; coding: utf-8 -*-
 
@@ -149,7 +158,7 @@ sys.path.insert(0, src_path)
 # Analysis phase
 a = Analysis(
     ['main.py'],
-    pathex=['{self.project_root}'],
+    pathex=['{project_root_str}'],
     binaries=[],
     datas=[
         ('src', 'src'),
@@ -266,8 +275,8 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon='{self.icon_path}',
-    version='{version_file}',
+    icon='{icon_path_str}',
+    version='{version_file_str}',
     uac_admin=False,
     uac_uiaccess=False,
     onefile=True,  # SINGLE FILE EXECUTABLE

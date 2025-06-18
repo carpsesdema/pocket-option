@@ -9,11 +9,6 @@ import os
 import logging
 from pathlib import Path
 
-# Add src directory to path
-project_root = Path(__file__).parent
-src_path = project_root / "src"
-sys.path.insert(0, str(src_path))
-
 from gui.main_window import ZigZagDetectorApp, create_app
 from config.settings import setup_logging
 
